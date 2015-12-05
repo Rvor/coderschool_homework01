@@ -1,0 +1,22 @@
+<div class="btn-group">
+  <% @sections.each do |section| %>
+    <%= link_to section.name, section_path(section), class: "btn btn-secondary", remote: true %>
+  <% end %>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-5">
+    <ul class="list-group">
+      <% @fooditems.each do |fooditem| %>
+        <li class="list-group-item">
+          <span class="label label-default label-pill pull-right">
+            <%= number_to_currency(fooditem.price, unit: "VND", precision:0, format: "%n %u") %>
+          </span>
+          <%= image_tag(fooditem.img_url, class: "img-thumb img-rounded") %>
+          <%= fooditem.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+

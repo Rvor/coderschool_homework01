@@ -1,0 +1,46 @@
+<div class="btn-group">
+<% @sections.each do |section| %>
+  <%= link_to section.name, menu_path(:section => section), class: "btn btn-secondary" %>
+<% end %>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+    <ul class="list-group">
+      <% @fooditems.each do |fooditem| %>
+        <li class="list-group-item">
+          <span class="label label-danger label-pill pull-right">
+            <%= number_to_currency(fooditem.price, unit: "VND", precision:0, format: "%n %u") %>
+          </span>
+          <%= link_to menu_path(:section => fooditem.section, :fooditem => fooditem) do %>
+            <div class="row">
+                <%= image_tag(fooditem.img_url, class: "img-thumb img-rounded") %>
+                <strong>
+                  <%= fooditem.name %>
+                </strong>
+          </div>
+        <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-sm-8">
+    <div class="card food-detail">
+      <div class="card-block">
+          <%= link_to "Order Now", "/", class: "btn btn-danger pull-right" %>
+          <div class="card-title">
+            <h3>
+              <strong><%= @currentfooditem.name %></strong>
+            </h3>
+          </div>
+          <span>Price: <strong><%= number_to_currency(@currentfooditem.price, unit: "VND", precision:0, format: "%n %u")%> </strong> </span>
+      </div>
+      <%= image_tag(@currentfooditem.img_url, class: "img-responsive", alt: @currentfooditem.name) %>
+      <div class="card-block">
+        <div class="card-text">
+        <%= @currentfooditem.description %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

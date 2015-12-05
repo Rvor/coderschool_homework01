@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ẩm Thực Việt Nam</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">  
+    <div class="nav navbar narbar-dark nbg-inverse">
+      <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">&#9776;</button>
+      <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+        <a class="navbar-brand" href="/">Ngon Muốn Chớt</a>
+        <ul class="nav navbar-nav pull-right">
+          <li class="nav-item active">
+           <a class="nav-link" href="/menu">Menu</a>
+         </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+         </li>
+    </ul>
+  </div>
+    </div>
+    <% if flash[:error] %>
+       <%= flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-danger" %>
+      <% end %>
+    <% end %>
+    <% if flash[:notice] %>
+       <%= flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-info" %>
+      <% end %>
+    <% end %>
+
+
+    <%= yield %>
+  </div>
+
+</body>
+</html>
