@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def menu
     @sections = Section.all
-    @fooditems = Fooditem.where(:section => params[:section]||=1)
+    @fooditems = Fooditem.search(params[:section]||=1, params[:search])
      
     if params[:fooditem]
       @currentfooditem = Fooditem.find(params[:fooditem])

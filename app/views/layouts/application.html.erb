@@ -7,21 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">  
-    <div class="nav navbar narbar-dark nbg-inverse">
+  <% unless current_page?(root_path) %>
+    <div id="main-nav" class="navbar navbar-inverisei bs-docs-nav fixed" role="banner">
+      <div class="container">
       <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">&#9776;</button>
-      <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-        <a class="navbar-brand" href="/">Ngon Muốn Chớt</a>
-        <ul class="nav navbar-nav pull-right">
+      <a class="navbar-brand" href="/"><i class="fa fa-home fa-lg"> </i></a>
+        <ul class="nav navbar-nav main-nav-list responsive-nav pull-right">
           <li class="nav-item active">
-           <a class="nav-link" href="/menu">Menu</a>
+          <a href="/menu"><i class="fa fa-list-ul fa-lg"></i></a>
+          </li>
+          <li class="nav-item">
+          <a href="/contact"><i class="fa fa-envelope fa-lg"></i></a>
          </li>
-         <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact Us</a>
-         </li>
-    </ul>
-  </div>
+        </ul>
+      </div>
     </div>
+  <% end %>
     <% if flash[:error] %>
        <%= flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: "alert alert-danger" %>

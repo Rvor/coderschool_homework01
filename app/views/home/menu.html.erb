@@ -1,9 +1,23 @@
-<div class="btn-group">
-<% @sections.each do |section| %>
-  <%= link_to section.name, menu_path(:section => section), class: "btn btn-secondary" %>
-<% end %>
-</div>
-
+<div class="container">
+  <h2>Menu</h2>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="btn-group">
+        <% @sections.each do |section| %>
+          <%= link_to section.name, menu_path(:section => section), class: "btn btn-secondary" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder+"Search for"/>
+        <span class="input-group-btn">
+          <button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <br/>
 <div class="row">
   <div class="col-sm-4">
     <ul class="list-group">
@@ -24,23 +38,31 @@
       <% end %>
     </ul>
   </div>
+  
   <div class="col-sm-8">
+    <% if @currentfooditem %>
     <div class="card food-detail">
       <div class="card-block">
           <%= link_to "Order Now", "/", class: "btn btn-danger pull-right" %>
           <div class="card-title">
             <h3>
-              <strong><%= @currentfooditem.name %></strong>
+              <strong><%= @currentfooditem.name if @currentfooditem %></strong>
             </h3>
           </div>
-          <span>Price: <strong><%= number_to_currency(@currentfooditem.price, unit: "VND", precision:0, format: "%n %u")%> </strong> </span>
+          <span>Price: <strong><%= number_to_currency(@currentfooditem.price, unit: "VND", precision:0, format: "%n %u") if @currentfooditem %> </strong> </span>
       </div>
-      <%= image_tag(@currentfooditem.img_url, class: "img-responsive", alt: @currentfooditem.name) %>
+      <%= image_tag(@currentfooditem.img_url, class: "img-responsive", alt: @currentfooditem.name)  if @currentfooditem %>
       <div class="card-block">
         <div class="card-text">
-        <%= @currentfooditem.description %>
+        <%= @currentfooditem.description if @currentfooditem %>
         </div>
       </div>
     </div>
   </div>
+<% else %>
+  <h3>
+    <span class="text text-danger">Out of Stock. </span>
+    </h3>
+<% end %>
+</div>
 </div>
