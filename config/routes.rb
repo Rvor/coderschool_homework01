@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :sections do
+  resources :line_items
+  resources :carts
+  resources :sections 
     resources :fooditems
-  end
   get 'home/index'
 
   get 'menu', to: 'home#menu', as: 'menu'
