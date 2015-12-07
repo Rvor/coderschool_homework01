@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-8">
       <div class="row">
-        <%= simple_form_for(:search, url: menu_path(:section => @section, :search => :search) , html: { class: 'form-horizontal', method: :get },
+        <%= simple_form_for(:search, url: menu_path, html: { class: 'form-horizontal', method: :get },
         wrapper: :horizontal_input_group
         ) do |f| %>
         <%= f.input :search, wrapper: :horizontal_input_group, label: false do %>
