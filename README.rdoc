@@ -8,11 +8,11 @@ Time spent: more than 24 hours spent in total
 
 URL: https://dry-earth-4073.herokuapp.com
 
-[.]Required User Stories
-[.]The User must be able to go two pages: Menu, and Contact Us.
-[.]The User can see the address and phone number on the contact us page.
-[.]The User can see a basic google map on the Contact Us page.
-[.]The User can navigate to a menu page with four sections:
+* [ ]Required User Stories
+The User must be able to go two pages: Menu, and Contact Us.
+The User can see the address and phone number on the contact us page.
+The User can see a basic google map on the Contact Us page.
+The User can navigate to a menu page with four sections:
 
 Breakfast
 Lunch
